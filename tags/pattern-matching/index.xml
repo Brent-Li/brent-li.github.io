@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pattern Matching on 李子峰的Github Page</title>
+    <link>http://brent-li.github.io/tags/pattern-matching/index.xml</link>
+    <description>Recent content in Pattern Matching on 李子峰的Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="http://brent-li.github.io/tags/pattern-matching/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Scala学习笔记之模式匹配</title>
+      <link>http://brent-li.github.io/post/scala-learning_pattern-matching/</link>
+      <pubDate>Wed, 08 Feb 2017 22:07:46 +0800</pubDate>
+      
+      <guid>http://brent-li.github.io/post/scala-learning_pattern-matching/</guid>
+      <description>
+
+&lt;h1 id=&#34;scala学习笔记之模式匹配&#34;&gt;Scala学习笔记之模式匹配&lt;/h1&gt;
+
+&lt;p&gt;本文学习内容来自&lt;a href=&#34;http://item.jd.com/11795034.html&#34;&gt;《Scala编程思想》第二版&lt;/a&gt;，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。&lt;/p&gt;
+
+&lt;p&gt;Scala &lt;em&gt;模式匹配&lt;/em&gt; (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的&lt;strong&gt;switch&lt;/strong&gt;，但更强大。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;匹配表达式&lt;/em&gt; 会将一个值与可能的选项进行匹配。示例代码如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def matchDayOfWeek(day:Int):String = {
+	day match {
+		case 1 =&amp;gt; &amp;quot;Monday&amp;quot;
+		case 2 =&amp;gt; &amp;quot;Tuesday&amp;quot;
+		case 3 =&amp;gt; &amp;quot;Wednesday&amp;quot;
+		case 4 =&amp;gt; &amp;quot;Thursday&amp;quot;
+		case 5 =&amp;gt; &amp;quot;Friday&amp;quot;
+		case 6 =&amp;gt; &amp;quot;Saturday&amp;quot;
+		case 7 =&amp;gt; &amp;quot;Sunday&amp;quot;
+		case _ =&amp;gt; &amp;quot;Are you kidding?&amp;quot;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要比较的值(这里是day)开头，关键字&lt;strong&gt;match&lt;/strong&gt;随后，然后是花括号包起来的组合表达式，每种可能都以关键字&lt;strong&gt;case&lt;/strong&gt;开头，后面是目标值，如果匹配，=&amp;gt;(&amp;ldquo;火箭&amp;rdquo;)右边的表达式即该match的结果。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;_&lt;/strong&gt; &lt;strong&gt;(下划线)&lt;/strong&gt;在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(&lt;em&gt;scala.MatchError&lt;/em&gt;)。另外，如果通配符放在其他位置，你会得到一个警告(&lt;em&gt;warning: unreachable code&lt;/em&gt;)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。&lt;/p&gt;
+
+&lt;p&gt;上面描述的是*匹配表达式*，即匹配目标值是表达式的情况。Scala还支持基于类型的模式匹配，即*匹配类型*。示例代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def matchAnything(x:Any):String = {
+  x match {
+    case s:String =&amp;gt; &amp;quot;A String: &amp;quot; + s
+    case i:Int if(i&amp;lt;20) =&amp;gt; s&amp;quot;An Int less than 20: $i&amp;quot;
+    case i:Int =&amp;gt; &amp;quot;An Int greater than 20: &amp;quot; + i
+    case _ =&amp;gt; &amp;quot;Unknown type.&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里的参数类型&lt;strong&gt;&lt;em&gt;Any&lt;/em&gt;&lt;/strong&gt;代表任何类型。这里的通配符_用来匹配任何类型。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;s&amp;rdquo;An Int less than 20: $i&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这种表达式叫作字符串插值，就是将格式化的值插入字符串。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;case i:Int if(i&lt;20) =&gt; s&amp;rdquo;An Int less than 20: $i&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这里if测试对该类型的匹配进行了限制&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

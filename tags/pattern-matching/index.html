@@ -13,15 +13,15 @@
 
 
 
-<meta name="twitter:title" content="李子峰的Github Page"/>
+<meta name="twitter:title" content="Pattern Matching"/>
 <meta name="twitter:description" content="知其雄，守其雌，为天下溪。"/>
 <meta name="twitter:site" content="@"/>
 
 
 
-  	<meta property="og:title" content="李子峰的Github Page" />
+  	<meta property="og:title" content="Pattern Matching &middot; 李子峰的Github Page" />
   	<meta property="og:site_name" content="李子峰的Github Page" />
-  	<meta property="og:url" content="http://brent-li.github.io/" />
+  	<meta property="og:url" content="http://brent-li.github.io/tags/pattern-matching/" />
     
     
         
@@ -34,7 +34,7 @@
     <meta property="og:description" content="知其雄，守其雌，为天下溪。" />
     
 
-    <title>李子峰的Github Page</title>
+    <title>Pattern Matching &middot; 李子峰的Github Page</title>
 
     
     <meta name="description" content="知其雄，守其雌，为天下溪。" />
@@ -54,13 +54,15 @@
 
     
       
+          <link href="http://brent-li.github.io/index.xml" rel="alternate" type="application/rss+xml" title="李子峰的Github Page" />
       
-        <link href="http://brent-li.github.io/index.xml" rel="alternate" type="application/rss+xml" title="李子峰的Github Page" />
+      
+        <link href="http://brent-li.github.io/tags/pattern-matching/index.xml" rel="alternate" type="application/rss+xml" title="Pattern Matching &middot; 李子峰的Github Page" />
       
     
     <meta name="generator" content="Hugo 0.18.1" />
 
-    <link rel="canonical" href="http://brent-li.github.io/" />
+    <link rel="canonical" href="http://brent-li.github.io/tags/pattern-matching/" />
 
     
       
@@ -123,7 +125,7 @@
         
         
             
-            <li class="nav-opened nav-current" role="presentation">
+            <li class="nav-opened" role="presentation">
             	<a href="http://brent-li.github.io/">My Blog</a>
             </li>
         
@@ -135,7 +137,7 @@
     </ul>
     
     
-    <a class="subscribe-button icon-feed" href="http://brent-li.github.io/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://brent-li.github.io/tags/pattern-matching/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -146,124 +148,42 @@
 
 
 
-  <header class="main-header" style="background-image: url(http://brent-li.github.io/images/cover.jpg)">
+	 
+  <header class="main-header tag-head" style="background-image: url(http://brent-li.github.io/images/cover.jpg)">
   
 
-
     <nav class="main-nav overlay clearfix">
-        
-            <a class="blog-logo" href="http://brent-li.github.io/"><img src="http://brent-li.github.io/images/Einstan.jpg" alt="Blog Logo" /></a>
-        
-        
-            <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
-        
+      
+        <a class="blog-logo" href="http://brent-li.github.io/"><img src="http://brent-li.github.io/images/Einstan.jpg" alt="Home" /></a>
+      
+      
+          <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+      
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            
-                <a class="bloglogo" href="https://www.linkedin.com/in/zifeng" target="_blank">
-                    <span class="icon-linkedin"></span>
-                </a>
-            &nbsp;
-            
-            
-                <a class="bloglogo" href="https://github.com/Brent-Li" target="_blank">
-                    <span class="icon-github"></span>
-                </a>
-            &nbsp;
-            
-                        
-            
-            
-            
-            
-            
-            
-
-            <h1 class="page-title">李子峰的Github Page</h1>
-            <h2 class="page-description">知其雄，守其雌，为天下溪。</h2>
+            <h1 class="page-title">Pattern Matching</h1>
+            <h2 class="page-description">
+                
+            </h2>
         </div>
     </div>
-    <a class="scroll-down icon-arrow-left" href="#content"><span class="hidden">Scroll Down</span></a>
 </header>
 
-
-<main id="content" class="content" role="main">
-
-    
-        
-    
-        
+<main class="content" role="main">
     
 
-    
-        
-            
-        
-    
-
-    
-    
-    
-
-    <div class="extra-pagination inner">
-        <nav class="pagination" role="navigation">
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
 	
 	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 
-    </div>
+	</div>
 
-    
-        
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://brent-li.github.io/post/scala-learning-map-reduce-foreach/">Scala学习笔记之`map`、`reduce`和`foreach`</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p>#Scala学习笔记之map、reduce和foreach
-啥废话也别说，先上代码：
-val v = Vector(1, 2, 3, 4) val v2 = v.map(n =&gt; n + 1)  它的输出是
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4) v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)  什么意思呢？
-第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。
-第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。
-map这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。
-再看reduce，同样先上代码：
-val v = Vector(1, 2, 3, 4) val v3 = v.reduce((sum, n) =&gt; sum + n)  它的输出是
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4) v3: Int = 10  这个10是怎么来的呢，或者说reduce是干嘛用的那？ <a class="read-more" href="http://brent-li.github.io/post/scala-learning-map-reduce-foreach/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="http://brent-li.github.io/images/Einstan.jpg" alt="Author image" nopin="nopin" />
-        
-        
-            李子峰
-        
-        on
-            
-                <a href="http://brent-li.github.io/tags/scala/">#scala</a>,
-            
-                <a href="http://brent-li.github.io/tags/map/">#map</a>,
-            
-                <a href="http://brent-li.github.io/tags/reduce/">#reduce</a>,
-            
-                <a href="http://brent-li.github.io/tags/foreach/">#foreach</a>,
-            
-        
-        <time class="post-date" datetime="2017-02-08T23:09:16&#43;08:00">
-            8 Feb 2017
-        </time>
-    </footer>
-</article>
-
-    
-        
+	
+	   
 <article class="post post">
     <header class="post-header">
         <h2 class="post-title"><a href="http://brent-li.github.io/post/scala-learning_pattern-matching/">Scala学习笔记之模式匹配</a></h2>
@@ -304,17 +224,17 @@ def matchAnything(x:Any):String = { x match { case s:String =&gt; &quot;A String
     </footer>
 </article>
 
-    
+	
 
-    <nav class="pagination" role="navigation">
+	<nav class="pagination" role="navigation">
 	
 	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 
-
-
 </main>
+
+
 
     <footer class="site-footer clearfix">
         <section class="copyright"><a href="">李子峰的Github Page</a> All rights reserved - 2017</section>
@@ -329,4 +249,3 @@ def matchAnything(x:Any):String = { x match { case s:String =&gt; &quot;A String
     
 </body>
 </html>
-

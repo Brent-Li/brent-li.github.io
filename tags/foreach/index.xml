@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Foreach on 李子峰的Github Page</title>
+    <link>http://brent-li.github.io/tags/foreach/index.xml</link>
+    <description>Recent content in Foreach on 李子峰的Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="http://brent-li.github.io/tags/foreach/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Scala学习笔记之`map`、`reduce`和`foreach`</title>
+      <link>http://brent-li.github.io/post/scala-learning-map-reduce-foreach/</link>
+      <pubDate>Wed, 08 Feb 2017 23:09:16 +0800</pubDate>
+      
+      <guid>http://brent-li.github.io/post/scala-learning-map-reduce-foreach/</guid>
+      <description>&lt;p&gt;#Scala学习笔记之&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;和&lt;code&gt;foreach&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;啥废话也别说，先上代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
+val v2 = v.map(n =&amp;gt; n + 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它的输出是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;什么意思呢？&lt;/p&gt;
+
+&lt;p&gt;第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。&lt;/p&gt;
+
+&lt;p&gt;第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。&lt;/p&gt;
+
+&lt;p&gt;再看&lt;code&gt;reduce&lt;/code&gt;，同样先上代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
+val v3 = v.reduce((sum, n) =&amp;gt; sum + n)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它的输出是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v3: Int = 10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个10是怎么来的呢，或者说&lt;code&gt;reduce&lt;/code&gt;是干嘛用的那？&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;reduce&lt;/code&gt;也不是减少的意思，而是归纳、简化的意思，具体讲是把容器中的元素作参数传给里面的二元匿名函数，我的理解是实际上是个尾递归函数。不要被这个名词吓到，它只是把递归换了个形式，等价的Java代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$java&#34;&gt;    public static int sumInt(int n) {
+        return sumInt(1, n );
+    }
+
+    public static int sumInt(int lastResult, int n) {
+        if (n &amp;lt;= 1) return lastResult;
+        return sumInt(n + lastResult, n - 1);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总之就是自己调用自己，之所以换种形式，是因为尾递归更容易优化，效率更高，内存占用更少。&lt;/p&gt;
+
+&lt;p&gt;回过头来看&lt;code&gt;reduce&lt;/code&gt;就是这种用尾递归的方式处理二元匿名函数，函数体可以是求和，也可以是求积，等等，把容器中的元素归集起来返回。&lt;/p&gt;
+
+&lt;p&gt;再说&lt;code&gt;foreach&lt;/code&gt;，这个就简单多了，单纯的遍历容器，并且还没有返回。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
+val v4 = v.foreach(n =&amp;gt; println(n))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;产生的输出是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;1
+2
+3
+4
+v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v4: Unit = ()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;v4类型是Unit，就是空的意思，因为&lt;code&gt;foreach&lt;/code&gt;没有返回。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;、&lt;code&gt;foreach&lt;/code&gt;这样基础的函数在scala中很常见，学会在恰当的地方使用，将会给你带来极大的方便。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

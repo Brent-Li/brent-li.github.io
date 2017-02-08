@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Scala学习笔记之`map`、`reduce`和`foreach`"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Scala学习笔记之`map`、`reduce`和`foreach` &middot; 李子峰的Github Page" />
+  	<meta property="og:site_name" content="李子峰的Github Page" />
+  	<meta property="og:url" content="http://brent-li.github.io/post/scala-learning-map-reduce-foreach/" />
+    
+    
+        
+            <meta property="og:image" content="http://brent-li.github.io/images/cover.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="http://brent-li.github.io/" />
+    <meta property="article:published_time" content="2017-02-08T23:09:16&#43;08:00" />
+
+    
+    <meta property="article:tag" content="scala" />
+    
+    <meta property="article:tag" content="map" />
+    
+    <meta property="article:tag" content="reduce" />
+    
+    <meta property="article:tag" content="foreach" />
+    
+    
+
+    <title>Scala学习笔记之`map`、`reduce`和`foreach` &middot; 李子峰的Github Page</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://brent-li.github.io/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://brent-li.github.io/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://brent-li.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://brent-li.github.io/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+    
+
+    
+      
+          <link href="http://brent-li.github.io/index.xml" rel="alternate" type="application/rss+xml" title="李子峰的Github Page" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.18.1" />
+
+    <link rel="canonical" href="http://brent-li.github.io/post/scala-learning-map-reduce-foreach/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "",
+        "logo": "http://brent-li.github.io/images/Einstan.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "",
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://brent-li.github.io/images/Einstan.jpg",
+            "width": 250,
+            "height": 250
+        }, 
+        
+        "url": "http://brent-li.github.io/",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ],
+        "description": "京东|高级软件工程师"
+        
+    },
+    "headline": "Scala学习笔记之`map`、`reduce`和`foreach`",
+    "name": "Scala学习笔记之`map`、`reduce`和`foreach`",
+    "wordCount":  134 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "http://brent-li.github.io/post/scala-learning-map-reduce-foreach/",
+    "datePublished": "2017-02-08T23:09Z",
+    "dateModified": "2017-02-08T23:09Z",
+    
+    "keywords": "scala, map, reduce, foreach",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://brent-li.github.io/post/scala-learning-map-reduce-foreach/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="http://brent-li.github.io/">My Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="http://brent-li.github.io/about">About me</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://brent-li.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://brent-li.github.io/"><img src="http://brent-li.github.io/images/Einstan.jpg" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Scala学习笔记之`map`、`reduce`和`foreach`</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-02-08T23:09:16&#43;08:00">
+            Feb 8, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://brent-li.github.io/tags/scala/">#scala</a></span>
+         
+          <span class="post-tag small"><a href="http://brent-li.github.io/tags/map/">#map</a></span>
+         
+          <span class="post-tag small"><a href="http://brent-li.github.io/tags/reduce/">#reduce</a></span>
+         
+          <span class="post-tag small"><a href="http://brent-li.github.io/tags/foreach/">#foreach</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>#Scala学习笔记之<code>map</code>、<code>reduce</code>和<code>foreach</code></p>
+
+<p>啥废话也别说，先上代码：</p>
+
+<pre><code class="language-$scala">val v = Vector(1, 2, 3, 4)
+val v2 = v.map(n =&gt; n + 1)
+</code></pre>
+
+<p>它的输出是</p>
+
+<pre><code class="language-$scala">v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
+</code></pre>
+
+<p>什么意思呢？</p>
+
+<p>第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。</p>
+
+<p>第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。</p>
+
+<p><code>map</code>这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。</p>
+
+<p>再看<code>reduce</code>，同样先上代码：</p>
+
+<pre><code class="language-$scala">val v = Vector(1, 2, 3, 4)
+val v3 = v.reduce((sum, n) =&gt; sum + n)
+</code></pre>
+
+<p>它的输出是</p>
+
+<pre><code class="language-$scala">v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v3: Int = 10
+</code></pre>
+
+<p>这个10是怎么来的呢，或者说<code>reduce</code>是干嘛用的那？</p>
+
+<p><code>reduce</code>也不是减少的意思，而是归纳、简化的意思，具体讲是把容器中的元素作参数传给里面的二元匿名函数，我的理解是实际上是个尾递归函数。不要被这个名词吓到，它只是把递归换了个形式，等价的Java代码如下：</p>
+
+<pre><code class="language-$java">    public static int sumInt(int n) {
+        return sumInt(1, n );
+    }
+
+    public static int sumInt(int lastResult, int n) {
+        if (n &lt;= 1) return lastResult;
+        return sumInt(n + lastResult, n - 1);
+    }
+</code></pre>
+
+<p>总之就是自己调用自己，之所以换种形式，是因为尾递归更容易优化，效率更高，内存占用更少。</p>
+
+<p>回过头来看<code>reduce</code>就是这种用尾递归的方式处理二元匿名函数，函数体可以是求和，也可以是求积，等等，把容器中的元素归集起来返回。</p>
+
+<p>再说<code>foreach</code>，这个就简单多了，单纯的遍历容器，并且还没有返回。</p>
+
+<pre><code class="language-$scala">val v = Vector(1, 2, 3, 4)
+val v4 = v.foreach(n =&gt; println(n))
+</code></pre>
+
+<p>产生的输出是</p>
+
+<pre><code class="language-$scala">1
+2
+3
+4
+v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v4: Unit = ()
+</code></pre>
+
+<p>v4类型是Unit，就是空的意思，因为<code>foreach</code>没有返回。</p>
+
+<p><code>map</code>、<code>reduce</code>、<code>foreach</code>这样基础的函数在scala中很常见，学会在恰当的地方使用，将会给你带来极大的方便。</p>
+
+<hr />
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://brent-li.github.io/" style="background-image: url(http://brent-li.github.io/images/Einstan.jpg)"><span class="hidden">李子峰's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://brent-li.github.io/">李子峰</a></h4>
+  
+  <p>京东|高级软件工程师</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Beijing, China</span>
+    <span class="author-link icon-link"><a href="http://brent-li.github.io/">http://brent-li.github.io/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Scala%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%e4%b9%8b%60map%60%e3%80%81%60reduce%60%e5%92%8c%60foreach%60&nbsp;-&nbsp;%e6%9d%8e%e5%ad%90%e5%b3%b0%e7%9a%84Github%20Page&amp;url=http%3a%2f%2fbrent-li.github.io%2fpost%2fscala-learning-map-reduce-foreach%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fbrent-li.github.io%2fpost%2fscala-learning-map-reduce-foreach%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fbrent-li.github.io%2fpost%2fscala-learning-map-reduce-foreach%2f&amp;description=Scala%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%e4%b9%8b%60map%60%e3%80%81%60reduce%60%e5%92%8c%60foreach%60"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fbrent-li.github.io%2fpost%2fscala-learning-map-reduce-foreach%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = '李子峰';
+  var disqus_url = 'http:\/\/brent-li.github.io\/post\/scala-learning-map-reduce-foreach\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">李子峰的Github Page</a> All rights reserved - 2017</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://brent-li.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="http://brent-li.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://brent-li.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
