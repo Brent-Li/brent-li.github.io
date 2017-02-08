@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>模式匹配 on 李子峰的Github Page</title>
-    <link>http://brent-li.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/index.xml</link>
+    <link>https://brent-li.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/index.xml</link>
     <description>Recent content in 模式匹配 on 李子峰的Github Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
     <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="http://brent-li.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://brent-li.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Scala学习笔记之模式匹配</title>
-      <link>http://brent-li.github.io/post/scala-learning_pattern-matching/</link>
+      <link>https://brent-li.github.io/post/scala-learning_pattern-matching/</link>
       <pubDate>Wed, 08 Feb 2017 22:07:46 +0800</pubDate>
       
-      <guid>http://brent-li.github.io/post/scala-learning_pattern-matching/</guid>
+      <guid>https://brent-li.github.io/post/scala-learning_pattern-matching/</guid>
       <description>
 
 &lt;h1 id=&#34;scala学习笔记之模式匹配&#34;&gt;Scala学习笔记之模式匹配&lt;/h1&gt;
