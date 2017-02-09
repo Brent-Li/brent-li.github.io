@@ -17,8 +17,6 @@
       <guid>https://brent-li.github.io/post/build-personal-site-with-hugo/</guid>
       <description>
 
-&lt;h1 id=&#34;用hugo搭建个人网站&#34;&gt;用Hugo搭建个人网站&lt;/h1&gt;
-
 &lt;p&gt;&lt;code&gt;摘要：
 本文将介绍什么是Hugo，怎么用Hugo搭建个人网站，如何本地测试及如何发布到Github并生成Github pages。
 &lt;/code&gt;&lt;/p&gt;
@@ -29,7 +27,7 @@
 
 &lt;p&gt;静态站点的好处就是快速、安全、易于部署，最主要是可以通过版本控制来进行管理。&lt;/p&gt;
 
-&lt;p&gt;静态网站生成器有很多种，Github上有&lt;a href=&#34;https://github.com/pinceladasdaweb/Static-Site-Generators&#34;&gt;总结&lt;/a&gt;，知名的&lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;，&lt;a href=&#34;https://middlemanapp.com/&#34;&gt;Middle Man App&lt;/a&gt;，等等。&lt;/p&gt;
+&lt;p&gt;静态网站生成器有很多种，Github上有&lt;a href=&#34;https://github.com/pinceladasdaweb/Static-Site-Generators&#34;&gt;总结&lt;/a&gt;，知名的有&lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;，&lt;a href=&#34;https://middlemanapp.com/&#34;&gt;Middle Man App&lt;/a&gt;，等等。&lt;/p&gt;
 
 &lt;p&gt;我之所以选择Hugo，首先是因为它支持Windows系统，并且安装很简单。其次是对markdown语法的支持，这对我来说很方便。然后是主题、文档支持等等各方面都比较完善。&lt;/p&gt;
 

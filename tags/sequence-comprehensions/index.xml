@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sequence Comprehensions on 李子峰的Github Page</title>
+    <link>https://brent-li.github.io/tags/sequence-comprehensions/index.xml</link>
+    <description>Recent content in Sequence Comprehensions on 李子峰的Github Page</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://brent-li.github.io/tags/sequence-comprehensions/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Scala学习笔记之序列解析（Sequence Comprehensions）</title>
+      <link>https://brent-li.github.io/post/scala-learning-sequence-comprehensions/</link>
+      <pubDate>Thu, 09 Feb 2017 22:41:29 +0800</pubDate>
+      
+      <guid>https://brent-li.github.io/post/scala-learning-sequence-comprehensions/</guid>
+      <description>&lt;p&gt;序列解析又称for推导式，表达式如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;for (enumerators) yield e&lt;/code&gt;，即由关键字for开头，后接圆括号或者花括号，中间是计数器，后接关键字yield，再后接表达式e，最终返回表达式计算结果组成的序列。&lt;/p&gt;
+
+&lt;p&gt;先解释计数器，在Scala中就是循环条件和过滤条件，所有支持&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;filterWith&lt;/code&gt;、&lt;code&gt;flatMap&lt;/code&gt;操作的数据类型都可以用在这里。&lt;/p&gt;
+
+&lt;p&gt;再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。&lt;/p&gt;
+
+&lt;p&gt;先举个简单例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;for (i &amp;lt;- List.range(0, 20) if i % 2 == 0) yield i
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;按照之前的解释，先看计数器，&lt;code&gt;i &amp;lt;- List.range(0, 20)&lt;/code&gt;遍历0到20，&lt;code&gt;if i % 2 == 0&lt;/code&gt;过滤只要偶数，&lt;code&gt;yield i&lt;/code&gt;不作其他计算，直接返回前面计算出来的偶数，所以最终输出如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;res2: List[Int] = List(0, 2, 4, 6, 8, 10, 12, 14, 16, 18)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在来个稍微复杂一点的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;for (i &amp;lt;- 0 until 20; j &amp;lt;- i until 20 if i + j == 32) yield (i, j)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其实也没复杂多少，只是把循环条件多加了一条，在0到20（不含20）的循环中，再从中间值i到20循环，生成的中间值i,j以元组形式返回，所以最终结果如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;res4: scala.collection.immutable.IndexedSeq[(Int, Int)] = Vector((13,19), (14,18), (15,17), (16,16))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来，再加一点复杂性：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;for {i &amp;lt;- Range(0, 20)
+     j &amp;lt;- Range(21, 30)
+       if i &amp;gt; 14
+       if j &amp;lt; 24
+       isOdd = (n:Int) =&amp;gt; n % 2 == 1 
+       if isOdd(i)
+       if isOdd(j)
+  } yield {
+    Range(i + 1, j)
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在循环中定义了一个函数isOdd用来判断是否奇数，用每个符合条件的元素重新构建区间Range，最终返回一个Range构成的序列，输出如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;res7: scala.collection.immutable.IndexedSeq[scala.collection.immutable.Range] = Vector(Range(16, 17, 18, 19, 20), Range(16, 17, 18, 19, 20, 21, 22), Range(18, 19, 20), Range(18, 19, 20, 21, 22), Range(20), Range(20, 21, 22))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过序列解析或者说for推导式，我们可以方便的处理序列，得到新的序列，有兴趣的读者可以尝试如果用Java来实现上述例子需要多少代码，就可以更好的理解Scala的便捷了。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
