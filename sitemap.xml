@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://brent-li.github.io/post/build-personal-site-with-hugo/</loc>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://brent-li.github.io/post/scala-learning-map-reduce-foreach/</loc>
     <lastmod>2017-02-08T23:09:16+08:00</lastmod>
   </url>
@@ -14,6 +19,18 @@
   <url>
     <loc>https://brent-li.github.io/tags/foreach/</loc>
     <lastmod>2017-02-08T23:09:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brent-li.github.io/tags/github/</loc>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brent-li.github.io/tags/hugo/</loc>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -31,7 +48,7 @@
   
   <url>
     <loc>https://brent-li.github.io/post/</loc>
-    <lastmod>2017-02-08T23:09:16+08:00</lastmod>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -54,13 +71,19 @@
   
   <url>
     <loc>https://brent-li.github.io/</loc>
-    <lastmod>2017-02-08T23:09:16+08:00</lastmod>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://brent-li.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</loc>
     <lastmod>2017-02-08T22:07:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://brent-li.github.io/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/</loc>
+    <lastmod>2017-02-09T20:03:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   

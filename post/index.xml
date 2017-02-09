@@ -7,8 +7,170 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Wed, 08 Feb 2017 23:09:16 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Feb 2017 20:03:38 +0800</lastBuildDate>
     <atom:link href="https://brent-li.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>build personal site with hugo</title>
+      <link>https://brent-li.github.io/post/build-personal-site-with-hugo/</link>
+      <pubDate>Thu, 09 Feb 2017 20:03:38 +0800</pubDate>
+      
+      <guid>https://brent-li.github.io/post/build-personal-site-with-hugo/</guid>
+      <description>&lt;p&gt;#用Hugo搭建个人网站&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;摘要：
+本文将介绍什么是Hugo，怎么用Hugo搭建个人网站，如何本地测试及如何发布到Github并生成Github pages。
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;##什么是Hugo&lt;/p&gt;
+
+&lt;p&gt;Hugo是一种静态网站生成器。适用于搭建个人博客、小型公司主页等网站，是一种小型的CMS系统。&lt;/p&gt;
+
+&lt;p&gt;静态站点的好处就是快速、安全、易于部署，最主要是可以通过版本控制来进行管理。&lt;/p&gt;
+
+&lt;p&gt;静态网站生成器有很多种，Github上有&lt;a href=&#34;https://github.com/pinceladasdaweb/Static-Site-Generators&#34;&gt;总结&lt;/a&gt;，知名的&lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;，&lt;a href=&#34;https://middlemanapp.com/&#34;&gt;Middle Man App&lt;/a&gt;，等等。&lt;/p&gt;
+
+&lt;p&gt;我之所以选择Hugo，首先是因为它支持Windows系统，并且安装很简单。其次是对markdown语法的支持，这对我来说很方便。然后是主题、文档支持等等各方面都比较完善。&lt;/p&gt;
+
+&lt;p&gt;##如何用Hugo搭建个人网站&lt;/p&gt;
+
+&lt;p&gt;###一 下载和安装Hugo&lt;/p&gt;
+
+&lt;p&gt;Hugo是用Go语言写的，早期版本还要下载Go，&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;目前版本&lt;/a&gt;是v0.18.1，直接下载，不再需要额外的依赖了。&lt;/p&gt;
+
+&lt;p&gt;win64x对应的是hugo_0.18.1_Windows-64bit.zip，下载后创建安装目录，例如&lt;code&gt;D:\Hugo&lt;/code&gt;，之下建两个子目录&lt;code&gt;bin&lt;/code&gt;和&lt;code&gt;Sites&lt;/code&gt;，然后解压，例如解压到&lt;code&gt;D:\Hugo\bin&lt;/code&gt;，把解压的hugo_0.18.1_windows_amd64.exe文件重命名为&lt;code&gt;hugo.exe&lt;/code&gt;，然后加到环境变量Path里，方便在命令行里使用。&lt;/p&gt;
+
+&lt;p&gt;添加成功后打开cmd或者PowerShell，运行命令&lt;code&gt;hugo version&lt;/code&gt;，如果安装成功，会输出&lt;code&gt;Hugo Static Site Generator v0.18.1 BuildDate: 2017-02-08T21:36:59+08:00&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;###二 搭建个人网站&lt;/p&gt;
+
+&lt;p&gt;首先要确定自己要搭建什么网站，我要建的是托管到Github的用户网站，按照Github Pages规则，网站名应该是&lt;code&gt;&amp;lt;username.github.io&amp;gt;&lt;/code&gt;，所以我第一步创建网站用以下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd D:\Hugo\Sites
+hugo new site brent-li.github.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后在Site目录下多了一个brent-li.github.io文件夹，进入文件夹可以看到目录结构如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+`-- static
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;archetypes目录里可以放一些原型，用于hugo新建内容的配置属性。config.toml是网站的配置属性文件。content文件夹里放你网站的内容，例如你发布的博客文章。data目录是Hugo使用的配置文件存放的地方。layout目录存放布局内容。static目录存放静态资源如图片、css等。&lt;/p&gt;
+
+&lt;p&gt;接下来我们先在content里放点东西。命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cd brent-li.github.io
+hugo new post/scala-learning-pattern-matching.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo会在content目录下创建&lt;code&gt;post&lt;/code&gt;目录，在&lt;code&gt;post&lt;/code&gt;目录下创建&lt;code&gt;scala-learning-pattern-matching.md&lt;/code&gt;文件。之后打开md文件，里面已经有些内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;+++
+date = &amp;quot;2017-02-08T22:07:46+08:00&amp;quot;
+title = &amp;quot;scala learning pattern matching&amp;quot;
+draft = true
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;+++&lt;/code&gt;包起来的内容是TOML配置信息，叫作&lt;code&gt;扉页(front matter)&lt;/code&gt;，默认这3项，可以再添加一些，其中&lt;code&gt;draft&lt;/code&gt;是&lt;code&gt;true&lt;/code&gt;时Hugo不会真正发布它，我修改后的扉页如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;+++
+date = &amp;quot;2017-02-08T22:07:46+08:00&amp;quot;
+title = &amp;quot;Scala学习笔记之模式匹配&amp;quot;
+draft = false
+tags = [&amp;quot;scala&amp;quot;,&amp;quot;pattern matching&amp;quot;,&amp;quot;模式匹配&amp;quot;]
+share = true
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后再把我的博客内容复制进md文件，一篇博客完成了。接下来该给网站添加主题来装饰一下了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugo主题网站&lt;/a&gt;提供了很多主题，选择自己喜欢的下载，我选择了&lt;a href=&#34;http://themes.gohugo.io/casper/&#34;&gt;casper&lt;/a&gt;，在自己网站目录下创建&lt;code&gt;themes&lt;/code&gt;目录，然后下载主题：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;cd themes
+git clone https://github.com/vjeantet/hugo-theme-casper casper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后配置config.toml文件如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;languageCode = &amp;quot;zh_CN&amp;quot; #语言
+title = &amp;quot;李子峰的Github Page&amp;quot; #博客标题
+baseurl = &amp;quot;https://brent-li.github.io/&amp;quot; #一定要用https，github强制安全措施
+paginate = 5 #分页每页记录数
+DisqusShortname = &amp;quot;李子峰&amp;quot; #评论时显示的名字
+Copyright = &amp;quot;All rights reserved - 2017&amp;quot; #版权
+canonifyurls = true 
+
+[params]
+  description = &amp;quot;知其雄，守其雌，为天下溪。&amp;quot; #加段提升逼格的副标题
+  cover = &amp;quot;images/cover.jpg&amp;quot; #自己找的博客封面，要够大够酷
+  author = &amp;quot;李子峰&amp;quot; #文章作者
+  authorlocation = &amp;quot;Beijing, China&amp;quot; #作者位置
+  authorwebsite = &amp;quot;https://brent-li.github.io/&amp;quot; #作者站点
+  bio= &amp;quot;京东|高级软件工程师&amp;quot; #作者简介
+  logo = &amp;quot;images/Einstan.jpg&amp;quot; #作者头像
+  #googleAnalyticsUserID = &amp;quot;UA-79101-12&amp;quot; 
+  # Optional RSS-Link, if not provided it defaults to the standard index.xml
+  #RSSLink = &amp;quot;http://feeds.feedburner.com/...&amp;quot;
+  githubName = &amp;quot;Brent-Li&amp;quot; #github用户名
+  #twitterName = &amp;quot;vjeantet&amp;quot; 
+  # facebookName = &amp;quot;&amp;quot;
+  linkedinName = &amp;quot;zifeng&amp;quot; #LinkedIn用户名
+  # set true if you are not proud of using Hugo (true will hide the footer note &amp;quot;Proudly published with HUGO.....&amp;quot;)
+  hideHUGOSupport = false #是否显示Hugo水印
+  [params.social]
+    linkedin = &amp;quot;https://cn.linkedin.com/in/zifeng&amp;quot;
+	
+[[menu.main]] #页面菜单参数
+  name = &amp;quot;李子峰的博客&amp;quot;
+  weight = -120
+  identifier = &amp;quot;blog&amp;quot;
+  url = &amp;quot;/&amp;quot;
+
+[[menu.main]]
+  name = &amp;quot;About me&amp;quot;
+  weight = -110
+  identifier = &amp;quot;about&amp;quot;
+  url = &amp;quot;/about&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置完不要忘了把封面、头像图片都拷贝到&lt;code&gt;static\images&lt;/code&gt;目录下。&lt;/p&gt;
+
+&lt;p&gt;###本地测试&lt;/p&gt;
+
+&lt;p&gt;Hugo自带服务器，可以用命令行启动：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;hugo server -t casper 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;服务器启动后访问&lt;code&gt;http://localhost:1313&lt;/code&gt;访问网站，发现问题可以及时修改。&lt;/p&gt;
+
+&lt;p&gt;###发布到github&lt;/p&gt;
+
+&lt;p&gt;本地测试网站没有问题后，就可以准备发布了。执行以下命令&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;hugo -t casper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo将编译所有文件并输出到&lt;code&gt;public&lt;/code&gt;目录，你需要在github上创建repository，名字就是&lt;code&gt;&amp;lt;你的用户名&amp;gt;.github.io&lt;/code&gt;，创建完后，返回你本地命令行，进入&lt;code&gt;public&lt;/code&gt;目录，执行以下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;git init
+git add .
+git commit -m &amp;quot;Initial commit.&amp;quot;
+git remote add origin git@github.com:Brent-Li/brent-li.github.io.git
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;稍等片刻后，打开&lt;code&gt;&amp;lt;你的用户名&amp;gt;.github.io&lt;/code&gt;网址，就可以看到你的个人网站了。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>Scala学习笔记之`map`、`reduce`和`foreach`</title>

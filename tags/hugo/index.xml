@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>李子峰的Github Page</title>
-    <link>https://brent-li.github.io/index.xml</link>
-    <description>Recent content on 李子峰的Github Page</description>
+    <title>Hugo on 李子峰的Github Page</title>
+    <link>https://brent-li.github.io/tags/hugo/index.xml</link>
+    <description>Recent content in Hugo on 李子峰的Github Page</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_CN</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Thu, 09 Feb 2017 20:03:38 +0800</lastBuildDate>
-    <atom:link href="https://brent-li.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://brent-li.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>build personal site with hugo</title>
@@ -167,152 +166,6 @@ git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;稍等片刻后，打开&lt;code&gt;&amp;lt;你的用户名&amp;gt;.github.io&lt;/code&gt;网址，就可以看到你的个人网站了。&lt;/p&gt;
-
-&lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Scala学习笔记之`map`、`reduce`和`foreach`</title>
-      <link>https://brent-li.github.io/post/scala-learning-map-reduce-foreach/</link>
-      <pubDate>Wed, 08 Feb 2017 23:09:16 +0800</pubDate>
-      
-      <guid>https://brent-li.github.io/post/scala-learning-map-reduce-foreach/</guid>
-      <description>&lt;p&gt;#Scala学习笔记之&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;和&lt;code&gt;foreach&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;啥废话也别说，先上代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
-val v2 = v.map(n =&amp;gt; n + 1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;它的输出是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
-v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;什么意思呢？&lt;/p&gt;
-
-&lt;p&gt;第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。&lt;/p&gt;
-
-&lt;p&gt;第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;map&lt;/code&gt;这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。&lt;/p&gt;
-
-&lt;p&gt;再看&lt;code&gt;reduce&lt;/code&gt;，同样先上代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
-val v3 = v.reduce((sum, n) =&amp;gt; sum + n)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;它的输出是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
-v3: Int = 10
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这个10是怎么来的呢，或者说&lt;code&gt;reduce&lt;/code&gt;是干嘛用的那？&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;reduce&lt;/code&gt;也不是减少的意思，而是归纳、简化的意思，具体讲是把容器中的元素作参数传给里面的二元匿名函数，我的理解是实际上是个尾递归函数。不要被这个名词吓到，它只是把递归换了个形式，等价的Java代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$java&#34;&gt;    public static int sumInt(int n) {
-        return sumInt(1, n );
-    }
-
-    public static int sumInt(int lastResult, int n) {
-        if (n &amp;lt;= 1) return lastResult;
-        return sumInt(n + lastResult, n - 1);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;总之就是自己调用自己，之所以换种形式，是因为尾递归更容易优化，效率更高，内存占用更少。&lt;/p&gt;
-
-&lt;p&gt;回过头来看&lt;code&gt;reduce&lt;/code&gt;就是这种用尾递归的方式处理二元匿名函数，函数体可以是求和，也可以是求积，等等，把容器中的元素归集起来返回。&lt;/p&gt;
-
-&lt;p&gt;再说&lt;code&gt;foreach&lt;/code&gt;，这个就简单多了，单纯的遍历容器，并且还没有返回。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
-val v4 = v.foreach(n =&amp;gt; println(n))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;产生的输出是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;1
-2
-3
-4
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
-v4: Unit = ()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;v4类型是Unit，就是空的意思，因为&lt;code&gt;foreach&lt;/code&gt;没有返回。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;、&lt;code&gt;foreach&lt;/code&gt;这样基础的函数在scala中很常见，学会在恰当的地方使用，将会给你带来极大的方便。&lt;/p&gt;
-
-&lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Scala学习笔记之模式匹配</title>
-      <link>https://brent-li.github.io/post/scala-learning_pattern-matching/</link>
-      <pubDate>Wed, 08 Feb 2017 22:07:46 +0800</pubDate>
-      
-      <guid>https://brent-li.github.io/post/scala-learning_pattern-matching/</guid>
-      <description>
-
-&lt;h1 id=&#34;scala学习笔记之模式匹配&#34;&gt;Scala学习笔记之模式匹配&lt;/h1&gt;
-
-&lt;p&gt;本文学习内容来自&lt;a href=&#34;http://item.jd.com/11795034.html&#34;&gt;《Scala编程思想》第二版&lt;/a&gt;，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。&lt;/p&gt;
-
-&lt;p&gt;Scala &lt;em&gt;模式匹配&lt;/em&gt; (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的&lt;strong&gt;switch&lt;/strong&gt;，但更强大。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;匹配表达式&lt;/em&gt; 会将一个值与可能的选项进行匹配。示例代码如下所示：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def matchDayOfWeek(day:Int):String = {
-	day match {
-		case 1 =&amp;gt; &amp;quot;Monday&amp;quot;
-		case 2 =&amp;gt; &amp;quot;Tuesday&amp;quot;
-		case 3 =&amp;gt; &amp;quot;Wednesday&amp;quot;
-		case 4 =&amp;gt; &amp;quot;Thursday&amp;quot;
-		case 5 =&amp;gt; &amp;quot;Friday&amp;quot;
-		case 6 =&amp;gt; &amp;quot;Saturday&amp;quot;
-		case 7 =&amp;gt; &amp;quot;Sunday&amp;quot;
-		case _ =&amp;gt; &amp;quot;Are you kidding?&amp;quot;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;要比较的值(这里是day)开头，关键字&lt;strong&gt;match&lt;/strong&gt;随后，然后是花括号包起来的组合表达式，每种可能都以关键字&lt;strong&gt;case&lt;/strong&gt;开头，后面是目标值，如果匹配，=&amp;gt;(&amp;ldquo;火箭&amp;rdquo;)右边的表达式即该match的结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;_&lt;/strong&gt; &lt;strong&gt;(下划线)&lt;/strong&gt;在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(&lt;em&gt;scala.MatchError&lt;/em&gt;)。另外，如果通配符放在其他位置，你会得到一个警告(&lt;em&gt;warning: unreachable code&lt;/em&gt;)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。&lt;/p&gt;
-
-&lt;p&gt;上面描述的是*匹配表达式*，即匹配目标值是表达式的情况。Scala还支持基于类型的模式匹配，即*匹配类型*。示例代码如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def matchAnything(x:Any):String = {
-  x match {
-    case s:String =&amp;gt; &amp;quot;A String: &amp;quot; + s
-    case i:Int if(i&amp;lt;20) =&amp;gt; s&amp;quot;An Int less than 20: $i&amp;quot;
-    case i:Int =&amp;gt; &amp;quot;An Int greater than 20: &amp;quot; + i
-    case _ =&amp;gt; &amp;quot;Unknown type.&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这里的参数类型&lt;strong&gt;&lt;em&gt;Any&lt;/em&gt;&lt;/strong&gt;代表任何类型。这里的通配符_用来匹配任何类型。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;s&amp;rdquo;An Int less than 20: $i&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这种表达式叫作字符串插值，就是将格式化的值插入字符串。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;case i:Int if(i&lt;20) =&gt; s&amp;rdquo;An Int less than 20: $i&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这里if测试对该类型的匹配进行了限制&lt;/p&gt;
 
 &lt;hr /&gt;
 </description>
