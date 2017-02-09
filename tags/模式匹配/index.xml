@@ -11,15 +11,11 @@
     
     <item>
       <title>Scala学习笔记之模式匹配</title>
-      <link>https://brent-li.github.io/post/scala-learning_pattern-matching/</link>
+      <link>https://brent-li.github.io/post/scala-learning-pattern-matching/</link>
       <pubDate>Wed, 08 Feb 2017 22:07:46 +0800</pubDate>
       
-      <guid>https://brent-li.github.io/post/scala-learning_pattern-matching/</guid>
-      <description>
-
-&lt;h1 id=&#34;scala学习笔记之模式匹配&#34;&gt;Scala学习笔记之模式匹配&lt;/h1&gt;
-
-&lt;p&gt;本文学习内容来自&lt;a href=&#34;http://item.jd.com/11795034.html&#34;&gt;《Scala编程思想》第二版&lt;/a&gt;，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。&lt;/p&gt;
+      <guid>https://brent-li.github.io/post/scala-learning-pattern-matching/</guid>
+      <description>&lt;p&gt;本文学习内容来自&lt;a href=&#34;http://item.jd.com/11795034.html&#34;&gt;《Scala编程思想》第二版&lt;/a&gt;，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。&lt;/p&gt;
 
 &lt;p&gt;Scala &lt;em&gt;模式匹配&lt;/em&gt; (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的&lt;strong&gt;switch&lt;/strong&gt;，但更强大。&lt;/p&gt;
 

@@ -15,9 +15,7 @@
       <pubDate>Wed, 08 Feb 2017 23:09:16 +0800</pubDate>
       
       <guid>https://brent-li.github.io/post/scala-learning-map-reduce-foreach/</guid>
-      <description>&lt;p&gt;#Scala学习笔记之&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;和&lt;code&gt;foreach&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;啥废话也别说，先上代码：&lt;/p&gt;
+      <description>&lt;p&gt;啥废话也别说，先上代码：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
 val v2 = v.map(n =&amp;gt; n + 1)
