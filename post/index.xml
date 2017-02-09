@@ -22,9 +22,9 @@
 
 &lt;p&gt;先解释计数器，在Scala中就是循环条件和过滤条件，所有支持&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;filterWith&lt;/code&gt;、&lt;code&gt;flatMap&lt;/code&gt;操作的数据类型都可以用在这里。&lt;/p&gt;
 
-&lt;p&gt;再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。&lt;/p&gt;
+&lt;p&gt;再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
 
-&lt;p&gt;先举个简单例子：&lt;/p&gt;
+先举个简单例子：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;for (i &amp;lt;- List.range(0, 20) if i % 2 == 0) yield i
 &lt;/code&gt;&lt;/pre&gt;
@@ -65,8 +65,7 @@
 
 &lt;p&gt;通过序列解析或者说for推导式，我们可以方便的处理序列，得到新的序列，有兴趣的读者可以尝试如果用Java来实现上述例子需要多少代码，就可以更好的理解Scala的便捷了。&lt;/p&gt;
 
-&lt;hr /&gt;
-</description>
+&lt;hr /&gt;</description>
     </item>
     
     <item>
@@ -75,9 +74,7 @@
       <pubDate>Thu, 09 Feb 2017 20:03:38 +0800</pubDate>
       
       <guid>https://brent-li.github.io/post/build-personal-site-with-hugo/</guid>
-      <description>
-
-&lt;p&gt;&lt;code&gt;摘要：
+      <description>&lt;p&gt;&lt;code&gt;摘要：
 本文将介绍什么是Hugo，怎么用Hugo搭建个人网站，如何本地测试及如何发布到Github并生成Github pages。
 &lt;/code&gt;&lt;/p&gt;
 
@@ -89,7 +86,8 @@
 
 &lt;p&gt;静态网站生成器有很多种，Github上有&lt;a href=&#34;https://github.com/pinceladasdaweb/Static-Site-Generators&#34;&gt;总结&lt;/a&gt;，知名的有&lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;，&lt;a href=&#34;https://middlemanapp.com/&#34;&gt;Middle Man App&lt;/a&gt;，等等。&lt;/p&gt;
 
-&lt;p&gt;我之所以选择Hugo，首先是因为它支持Windows系统，并且安装很简单。其次是对markdown语法的支持，这对我来说很方便。然后是主题、文档支持等等各方面都比较完善。&lt;/p&gt;
+&lt;p&gt;我之所以选择Hugo，首先是因为它支持Windows系统，并且安装很简单。其次是对markdown语法的支持，这对我来说很方便。然后是主题、文档支持等等各方面都比较完善。
+&lt;/p&gt;
 
 &lt;h2 id=&#34;如何用hugo搭建个人网站&#34;&gt;如何用Hugo搭建个人网站&lt;/h2&gt;
 
@@ -227,8 +225,7 @@ git push -u origin master
 
 &lt;p&gt;稍等片刻后，打开&lt;code&gt;&amp;lt;你的用户名&amp;gt;.github.io&lt;/code&gt;网址，就可以看到你的个人网站了。&lt;/p&gt;
 
-&lt;hr /&gt;
-</description>
+&lt;hr /&gt;</description>
     </item>
     
     <item>
@@ -255,9 +252,9 @@ v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
 
 &lt;p&gt;第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;map&lt;/code&gt;这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。
 
-&lt;p&gt;再看&lt;code&gt;reduce&lt;/code&gt;，同样先上代码：&lt;/p&gt;
+再看&lt;code&gt;reduce&lt;/code&gt;，同样先上代码：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-$scala&#34;&gt;val v = Vector(1, 2, 3, 4)
 val v3 = v.reduce((sum, n) =&amp;gt; sum + n)
@@ -307,8 +304,7 @@ v4: Unit = ()
 
 &lt;p&gt;&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;reduce&lt;/code&gt;、&lt;code&gt;foreach&lt;/code&gt;这样基础的函数在scala中很常见，学会在恰当的地方使用，将会给你带来极大的方便。&lt;/p&gt;
 
-&lt;hr /&gt;
-</description>
+&lt;hr /&gt;</description>
     </item>
     
     <item>
@@ -337,9 +333,9 @@ v4: Unit = ()
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;要比较的值(这里是day)开头，关键字&lt;strong&gt;match&lt;/strong&gt;随后，然后是花括号包起来的组合表达式，每种可能都以关键字&lt;strong&gt;case&lt;/strong&gt;开头，后面是目标值，如果匹配，=&amp;gt;(&amp;ldquo;火箭&amp;rdquo;)右边的表达式即该match的结果。&lt;/p&gt;
+&lt;p&gt;要比较的值(这里是day)开头，关键字&lt;strong&gt;match&lt;/strong&gt;随后，然后是花括号包起来的组合表达式，每种可能都以关键字&lt;strong&gt;case&lt;/strong&gt;开头，后面是目标值，如果匹配，=&amp;gt;(&amp;ldquo;火箭&amp;rdquo;)右边的表达式即该match的结果。
 
-&lt;p&gt;&lt;strong&gt;_&lt;/strong&gt; &lt;strong&gt;(下划线)&lt;/strong&gt;在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(&lt;em&gt;scala.MatchError&lt;/em&gt;)。另外，如果通配符放在其他位置，你会得到一个警告(&lt;em&gt;warning: unreachable code&lt;/em&gt;)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。&lt;/p&gt;
+&lt;strong&gt;_&lt;/strong&gt; &lt;strong&gt;(下划线)&lt;/strong&gt;在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(&lt;em&gt;scala.MatchError&lt;/em&gt;)。另外，如果通配符放在其他位置，你会得到一个警告(&lt;em&gt;warning: unreachable code&lt;/em&gt;)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。&lt;/p&gt;
 
 &lt;p&gt;上面描述的是*匹配表达式*，即匹配目标值是表达式的情况。Scala还支持基于类型的模式匹配，即*匹配类型*。示例代码如下：&lt;/p&gt;
 
@@ -367,8 +363,7 @@ v4: Unit = ()
 
 &lt;p&gt;这里if测试对该类型的匹配进行了限制&lt;/p&gt;
 
-&lt;hr /&gt;
-</description>
+&lt;hr /&gt;</description>
     </item>
     
   </channel>

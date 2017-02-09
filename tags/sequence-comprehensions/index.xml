@@ -21,9 +21,9 @@
 
 &lt;p&gt;先解释计数器，在Scala中就是循环条件和过滤条件，所有支持&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;filterWith&lt;/code&gt;、&lt;code&gt;flatMap&lt;/code&gt;操作的数据类型都可以用在这里。&lt;/p&gt;
 
-&lt;p&gt;再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。&lt;/p&gt;
+&lt;p&gt;再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
 
-&lt;p&gt;先举个简单例子：&lt;/p&gt;
+先举个简单例子：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-Scala&#34;&gt;for (i &amp;lt;- List.range(0, 20) if i % 2 == 0) yield i
 &lt;/code&gt;&lt;/pre&gt;
@@ -64,8 +64,7 @@
 
 &lt;p&gt;通过序列解析或者说for推导式，我们可以方便的处理序列，得到新的序列，有兴趣的读者可以尝试如果用Java来实现上述例子需要多少代码，就可以更好的理解Scala的便捷了。&lt;/p&gt;
 
-&lt;hr /&gt;
-</description>
+&lt;hr /&gt;</description>
     </item>
     
   </channel>

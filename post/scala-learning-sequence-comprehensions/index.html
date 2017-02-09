@@ -227,9 +227,9 @@
 
 <p>先解释计数器，在Scala中就是循环条件和过滤条件，所有支持<code>map</code>、<code>filterWith</code>、<code>flatMap</code>操作的数据类型都可以用在这里。</p>
 
-<p>再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。</p>
+<p>再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
 
-<p>先举个简单例子：</p>
+先举个简单例子：</p>
 
 <pre><code class="language-Scala">for (i &lt;- List.range(0, 20) if i % 2 == 0) yield i
 </code></pre>
@@ -271,7 +271,6 @@
 <p>通过序列解析或者说for推导式，我们可以方便的处理序列，得到新的序列，有兴趣的读者可以尝试如果用Java来实现上述例子需要多少代码，就可以更好的理解Scala的便捷了。</p>
 
 <hr />
-
     </section>
 
 

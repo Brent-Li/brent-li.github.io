@@ -190,13 +190,25 @@
     </header>
     <section class="post-excerpt">
         
-            <p>本文学习内容来自《Scala编程思想》第二版，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。
-Scala 模式匹配 (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的switch，但更强大。
-匹配表达式 会将一个值与可能的选项进行匹配。示例代码如下所示：
-def matchDayOfWeek(day:Int):String = { day match { case 1 =&gt; &quot;Monday&quot; case 2 =&gt; &quot;Tuesday&quot; case 3 =&gt; &quot;Wednesday&quot; case 4 =&gt; &quot;Thursday&quot; case 5 =&gt; &quot;Friday&quot; case 6 =&gt; &quot;Saturday&quot; case 7 =&gt; &quot;Sunday&quot; case _ =&gt; &quot;Are you kidding?&quot; } }  要比较的值(这里是day)开头，关键字match随后，然后是花括号包起来的组合表达式，每种可能都以关键字case开头，后面是目标值，如果匹配，=&gt;(&ldquo;火箭&rdquo;)右边的表达式即该match的结果。
-_ (下划线)在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(scala.MatchError)。另外，如果通配符放在其他位置，你会得到一个警告(warning: unreachable code)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。
-上面描述的是*匹配表达式*，即匹配目标值是表达式的情况。Scala还支持基于类型的模式匹配，即*匹配类型*。示例代码如下：
-def matchAnything(x:Any):String = { x match { case s:String =&gt; &quot;A String: &quot; + s case i:Int if(i&lt;20) =&gt; s&quot;An Int less than 20: $i&quot; case i:Int =&gt; &quot;An Int greater than 20: &quot; + i case _ =&gt; &quot;Unknown type. <a class="read-more" href="https://brent-li.github.io/post/scala-learning-pattern-matching/">&raquo;</a></p>
+            <p><p>本文学习内容来自<a href="http://item.jd.com/11795034.html">《Scala编程思想》第二版</a>，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。</p>
+
+<p>Scala <em>模式匹配</em> (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的<strong>switch</strong>，但更强大。</p>
+
+<p><em>匹配表达式</em> 会将一个值与可能的选项进行匹配。示例代码如下所示：</p>
+
+<pre><code class="language-scala">def matchDayOfWeek(day:Int):String = {
+	day match {
+		case 1 =&gt; &quot;Monday&quot;
+		case 2 =&gt; &quot;Tuesday&quot;
+		case 3 =&gt; &quot;Wednesday&quot;
+		case 4 =&gt; &quot;Thursday&quot;
+		case 5 =&gt; &quot;Friday&quot;
+		case 6 =&gt; &quot;Saturday&quot;
+		case 7 =&gt; &quot;Sunday&quot;
+		case _ =&gt; &quot;Are you kidding?&quot;
+	}
+}
+</code></pre> <a class="read-more" href="https://brent-li.github.io/post/scala-learning-pattern-matching/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

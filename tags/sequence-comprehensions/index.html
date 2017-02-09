@@ -190,15 +190,15 @@
     </header>
     <section class="post-excerpt">
         
-            <p>序列解析又称for推导式，表达式如下：
-for (enumerators) yield e，即由关键字for开头，后接圆括号或者花括号，中间是计数器，后接关键字yield，再后接表达式e，最终返回表达式计算结果组成的序列。
-先解释计数器，在Scala中就是循环条件和过滤条件，所有支持map、filterWith、flatMap操作的数据类型都可以用在这里。
-再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
-先举个简单例子：
-for (i &lt;- List.range(0, 20) if i % 2 == 0) yield i  按照之前的解释，先看计数器，i &lt;- List.range(0, 20)遍历0到20，if i % 2 == 0过滤只要偶数，yield i不作其他计算，直接返回前面计算出来的偶数，所以最终输出如下：
-res2: List[Int] = List(0, 2, 4, 6, 8, 10, 12, 14, 16, 18)  在来个稍微复杂一点的例子：
-for (i &lt;- 0 until 20; j &lt;- i until 20 if i + j == 32) yield (i, j)  其实也没复杂多少，只是把循环条件多加了一条，在0到20（不含20）的循环中，再从中间值i到20循环，生成的中间值i,j以元组形式返回，所以最终结果如下：
-res4: scala. <a class="read-more" href="https://brent-li.github.io/post/scala-learning-sequence-comprehensions/">&raquo;</a></p>
+            <p><p>序列解析又称for推导式，表达式如下：</p>
+
+<p><code>for (enumerators) yield e</code>，即由关键字for开头，后接圆括号或者花括号，中间是计数器，后接关键字yield，再后接表达式e，最终返回表达式计算结果组成的序列。</p>
+
+<p>先解释计数器，在Scala中就是循环条件和过滤条件，所有支持<code>map</code>、<code>filterWith</code>、<code>flatMap</code>操作的数据类型都可以用在这里。</p>
+
+<p>再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
+
+先举个简单例子：</p> <a class="read-more" href="https://brent-li.github.io/post/scala-learning-sequence-comprehensions/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

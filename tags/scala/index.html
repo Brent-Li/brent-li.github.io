@@ -190,15 +190,15 @@
     </header>
     <section class="post-excerpt">
         
-            <p>序列解析又称for推导式，表达式如下：
-for (enumerators) yield e，即由关键字for开头，后接圆括号或者花括号，中间是计数器，后接关键字yield，再后接表达式e，最终返回表达式计算结果组成的序列。
-先解释计数器，在Scala中就是循环条件和过滤条件，所有支持map、filterWith、flatMap操作的数据类型都可以用在这里。
-再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
-先举个简单例子：
-for (i &lt;- List.range(0, 20) if i % 2 == 0) yield i  按照之前的解释，先看计数器，i &lt;- List.range(0, 20)遍历0到20，if i % 2 == 0过滤只要偶数，yield i不作其他计算，直接返回前面计算出来的偶数，所以最终输出如下：
-res2: List[Int] = List(0, 2, 4, 6, 8, 10, 12, 14, 16, 18)  在来个稍微复杂一点的例子：
-for (i &lt;- 0 until 20; j &lt;- i until 20 if i + j == 32) yield (i, j)  其实也没复杂多少，只是把循环条件多加了一条，在0到20（不含20）的循环中，再从中间值i到20循环，生成的中间值i,j以元组形式返回，所以最终结果如下：
-res4: scala. <a class="read-more" href="https://brent-li.github.io/post/scala-learning-sequence-comprehensions/">&raquo;</a></p>
+            <p><p>序列解析又称for推导式，表达式如下：</p>
+
+<p><code>for (enumerators) yield e</code>，即由关键字for开头，后接圆括号或者花括号，中间是计数器，后接关键字yield，再后接表达式e，最终返回表达式计算结果组成的序列。</p>
+
+<p>先解释计数器，在Scala中就是循环条件和过滤条件，所有支持<code>map</code>、<code>filterWith</code>、<code>flatMap</code>操作的数据类型都可以用在这里。</p>
+
+<p>再说yield后面的表达式，是对前面计数器生成的每个绑定值进行的计算，最终将每个计算结果组成序列返回。
+
+先举个简单例子：</p> <a class="read-more" href="https://brent-li.github.io/post/scala-learning-sequence-comprehensions/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -236,16 +236,27 @@ res4: scala. <a class="read-more" href="https://brent-li.github.io/post/scala-le
     </header>
     <section class="post-excerpt">
         
-            <p>啥废话也别说，先上代码：
-val v = Vector(1, 2, 3, 4) val v2 = v.map(n =&gt; n + 1)  它的输出是
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4) v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)  什么意思呢？
-第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。
-第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。
-map这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。
-再看reduce，同样先上代码：
-val v = Vector(1, 2, 3, 4) val v3 = v.reduce((sum, n) =&gt; sum + n)  它的输出是
-v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4) v3: Int = 10  这个10是怎么来的呢，或者说reduce是干嘛用的那？
-reduce也不是减少的意思，而是归纳、简化的意思，具体讲是把容器中的元素作参数传给里面的二元匿名函数，我的理解是实际上是个尾递归函数。不要被这个名词吓到，它只是把递归换了个形式，等价的Java代码如下： <a class="read-more" href="https://brent-li.github.io/post/scala-learning-map-reduce-foreach/">&raquo;</a></p>
+            <p><p>啥废话也别说，先上代码：</p>
+
+<pre><code class="language-$scala">val v = Vector(1, 2, 3, 4)
+val v2 = v.map(n =&gt; n + 1)
+</code></pre>
+
+<p>它的输出是</p>
+
+<pre><code class="language-$scala">v: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
+</code></pre>
+
+<p>什么意思呢？</p>
+
+<p>第一句的意思是声明一个向量名叫v，并将初始值传递给它，用Java程序猿习惯的说法是创建一个向量对象，赋给v。</p>
+
+<p>第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。</p>
+
+<p><code>map</code>这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。
+
+再看<code>reduce</code>，同样先上代码：</p> <a class="read-more" href="https://brent-li.github.io/post/scala-learning-map-reduce-foreach/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">
@@ -283,13 +294,25 @@ reduce也不是减少的意思，而是归纳、简化的意思，具体讲是�
     </header>
     <section class="post-excerpt">
         
-            <p>本文学习内容来自《Scala编程思想》第二版，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。
-Scala 模式匹配 (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的switch，但更强大。
-匹配表达式 会将一个值与可能的选项进行匹配。示例代码如下所示：
-def matchDayOfWeek(day:Int):String = { day match { case 1 =&gt; &quot;Monday&quot; case 2 =&gt; &quot;Tuesday&quot; case 3 =&gt; &quot;Wednesday&quot; case 4 =&gt; &quot;Thursday&quot; case 5 =&gt; &quot;Friday&quot; case 6 =&gt; &quot;Saturday&quot; case 7 =&gt; &quot;Sunday&quot; case _ =&gt; &quot;Are you kidding?&quot; } }  要比较的值(这里是day)开头，关键字match随后，然后是花括号包起来的组合表达式，每种可能都以关键字case开头，后面是目标值，如果匹配，=&gt;(&ldquo;火箭&rdquo;)右边的表达式即该match的结果。
-_ (下划线)在这里代表*通配符*，即任意值，在上面代码里，除了1~7之外的整数会匹配到下划线。注意，它通常是放在匹配列表的最后。如果没有使用通配符，那么当你试图匹配1~7之外的值时会产生错误(scala.MatchError)。另外，如果通配符放在其他位置，你会得到一个警告(warning: unreachable code)，并且之后的匹配条件将失效，因为通配符代表任意值，scala先找到它就认为完成匹配了。
-上面描述的是*匹配表达式*，即匹配目标值是表达式的情况。Scala还支持基于类型的模式匹配，即*匹配类型*。示例代码如下：
-def matchAnything(x:Any):String = { x match { case s:String =&gt; &quot;A String: &quot; + s case i:Int if(i&lt;20) =&gt; s&quot;An Int less than 20: $i&quot; case i:Int =&gt; &quot;An Int greater than 20: &quot; + i case _ =&gt; &quot;Unknown type. <a class="read-more" href="https://brent-li.github.io/post/scala-learning-pattern-matching/">&raquo;</a></p>
+            <p><p>本文学习内容来自<a href="http://item.jd.com/11795034.html">《Scala编程思想》第二版</a>，谨以记录Scala学习历程，为避免侵权，不会大量使用书中文字和代码，如果读者想认真学习，可自行购买书籍。</p>
+
+<p>Scala <em>模式匹配</em> (pattern matching)基于是否匹配某项条件来执行相应动作。类似于Java的<strong>switch</strong>，但更强大。</p>
+
+<p><em>匹配表达式</em> 会将一个值与可能的选项进行匹配。示例代码如下所示：</p>
+
+<pre><code class="language-scala">def matchDayOfWeek(day:Int):String = {
+	day match {
+		case 1 =&gt; &quot;Monday&quot;
+		case 2 =&gt; &quot;Tuesday&quot;
+		case 3 =&gt; &quot;Wednesday&quot;
+		case 4 =&gt; &quot;Thursday&quot;
+		case 5 =&gt; &quot;Friday&quot;
+		case 6 =&gt; &quot;Saturday&quot;
+		case 7 =&gt; &quot;Sunday&quot;
+		case _ =&gt; &quot;Are you kidding?&quot;
+	}
+}
+</code></pre> <a class="read-more" href="https://brent-li.github.io/post/scala-learning-pattern-matching/">&raquo;</a></p>
         
     </section>
     <footer class="post-meta">

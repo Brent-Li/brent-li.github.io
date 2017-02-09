@@ -239,9 +239,9 @@ v2: scala.collection.immutable.Vector[Int] = Vector(2, 3, 4, 5)
 
 <p>第二句话的意思是对v的每个元素加1，产生新的向量返回给v2。从输出中可以看出结果确实如此。</p>
 
-<p><code>map</code>这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。</p>
+<p><code>map</code>这个单词在这里不是地图的意思，而是映射、关联，将源容器中的元素经过函数处理后一一映射到新容器中。上面代码中执行的函数就是加个1的匿名函数，我们可以自己定义成其他函数，加2啊，乘5啊，平方啊，等等。
 
-<p>再看<code>reduce</code>，同样先上代码：</p>
+再看<code>reduce</code>，同样先上代码：</p>
 
 <pre><code class="language-$scala">val v = Vector(1, 2, 3, 4)
 val v3 = v.reduce((sum, n) =&gt; sum + n)
@@ -292,7 +292,6 @@ v4: Unit = ()
 <p><code>map</code>、<code>reduce</code>、<code>foreach</code>这样基础的函数在scala中很常见，学会在恰当的地方使用，将会给你带来极大的方便。</p>
 
 <hr />
-
     </section>
 
 
